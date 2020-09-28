@@ -15,16 +15,17 @@ Assuming *nix like OS (e.g. Mac or Linux), can add Windows instructions if neede
 2. `pip install -r requirements.txt`
 3. Create a database
 4. Create your own `.env` file (base it off `.env.example` but you'll need to adapt it to your own machine)
-5. Run any database migrations: `FLASK_APP=adverserial FLAST_ENV=development flask db upgrade`
+5. Run any database migrations: `flask db upgrade`
+6. Import some seed data: `flask examples replace seeds/seed_examples.jsonl`
 
 ## Usage
 
 ### Server
 
-`FLASK_APP=adverserial FLAST_ENV=development flask run`
+`flask run`
 
 App will be available at http://localhost:5000
 
 ### Run database migrations
 
-`FLASK_APP=adverserial FLAST_ENV=development flask db upgrade`
+`flask db upgrade`
