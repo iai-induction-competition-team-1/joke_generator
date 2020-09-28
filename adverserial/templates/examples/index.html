@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Examples{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="context">Context</label>
+    <input name="context" id="context" required>
+
+    <label for="question">Question</label>
+    <input name="question" id="question" required>
+
+    <label for="answer_a">Option A</label>
+    <input name="answer_a" id="answer_a" required>
+
+    <label for="answer_b">Option B</label>
+    <input name="answer_b" id="answer_b" required>
+
+    <label for="answer_c">Option C</label>
+    <input name="answer_c" id="answer_c" required>
+
+    <label for="correct_answer">Correct Answer</label>
+    <input name="correct_answer" id="correct_answer" required>
+
+    <input type="submit" value="Create example">
+  </form>
+{% endblock %}

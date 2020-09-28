@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Examples{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <input name="seed_example_id" id="seed_example_id" type="hidden" value="{{seed_example.id}}">
+
+    <h2>Context</h2>
+    {{seed_example.context}}
+
+    <label for="question">Question</label>
+    <input name="question" id="question" required>
+
+    <h2>Answer</h2>
+    {{seed_example.correct_answer()}}
+
+    <input type="submit" value="Next">
+  </form>
+{% endblock %}

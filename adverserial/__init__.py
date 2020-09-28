@@ -33,17 +33,46 @@ def create_app(test_config=None):
   db.init_app(app)
   migrate.init_app(app, db)
 
-  @app.route('/hello')
-  def hello():
-    return 'Hello, World!'
+  from . import home
+  app.register_blueprint(home.bp)
+
+  from . import jokes
+  app.register_blueprint(jokes.bp)
+
+  from . import examples
+  app.register_blueprint(examples.bp)
 
   return app
 
-class Example(db.Model):
+class SeedExample(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   context = db.Column(db.String)
   question = db.Column(db.String)
   answer_a = db.Column(db.String)
   answer_b = db.Column(db.String)
   answer_c = db.Column(db.String)
-  correct_answer = db.Column(db.String)
+  correct_answer_index = db.Column(db.String)
+
+  def correct_answer(self):
+    if self.correct_answer_index.lower() == "a":
+      return self.answer_a
+    elif self.correct_answer_index.lower() == "b":
+      return self.answer_b
+    elif self.correct_answer_index.lower() == "c":
+      return self.answer_c
+
+
+class NewAnswerExample(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  seed_example_id = db.Column(db.Integer, db.ForeignKey('seed_example.id'), nullable=False)
+  answer = db.Column(db.String)
+
+class NewQuestionExample(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  seed_example_id = db.Column(db.Integer, db.ForeignKey('seed_example.id'), nullable=False)
+  question = db.Column(db.String)
+
+class NewContextExample(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  seed_example_id = db.Column(db.Integer, db.ForeignKey('seed_example.id'), nullable=False)
+  context = db.Column(db.String)
