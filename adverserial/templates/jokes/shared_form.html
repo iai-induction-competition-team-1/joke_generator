@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Joke Generator Competition{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="two-thirds column" style="margin-top: 10%">
+        <form method="post">
+          <input name="seed_example_id" id="seed_example_id" type="hidden" value="{{seed_example.id}}">
+          <div class="row">
+            {% block form %}{% endblock %}
+          </div>
+
+          <input class="button button-primary" type="submit" value="Next">
+        </form>
+      </div>
+      <div class="one-third column" style="margin-top: 10%">
+        HERE ARE SOME EXAMPLES FOR INSPIRATION:
+
+        <div>
+          <p>
+            Ash was still angry at his mother for making his sandwich without mustard. How would you describe Ash?
+          </p>
+          <p>
+            Answer: mustardless
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

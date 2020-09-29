@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
-{% block header %}
-  <h1>{% block title %}Joke Generator Competition{% endblock %}</h1>
-{% endblock %}
+
+{% block title %}Joke Generator Competition{% endblock %}
 
 {% block content %}
   <main>
     <div class="container">
       <div class="row">
-        <div class="one-half column" style="margin-top: 25%">
+        <div style="margin-top: 10%">
           <h1>JOKE GENERATOR COMPETITION</h1>
           <p>
             Help advance the social and emotional intelligence of AI by showing your comedic talent. Given a context, AI will sometimes come up with amusing continuations of the story. We are here to teach AI stories that are funny because they don't make common sense. Jokes come in three parts : Context, question and answer.  In the following you will be asked to complete one of each part given the two remaining parts. Then you will vote on past contributions and win a prize if your submission is the most popular!
           </p>
 
-          <a href="{{ url_for('jokes.answer') }}">START HERE</a>
+          <a class="button button-primary" href="{{ url_for('jokes.answer') }}">START HERE</a>
         </div>
       </div>
     </div>

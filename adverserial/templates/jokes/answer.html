@@ -1,22 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'jokes/shared_form.html' %}
 
-{% block header %}
-  <h1>{% block title %}Joke Generator Competition{% endblock %}</h1>
-{% endblock %}
+{% block form %}
+  <h2>Context</h2>
+  {{seed_example.context}}
 
-{% block content %}
-  <form method="post">
-    <input name="seed_example_id" id="seed_example_id" type="hidden" value="{{seed_example.id}}">
+  <h2>Question</h2>
+  {{seed_example.question}}
 
-    <h2>Context</h2>
-    {{seed_example.context}}
-
-    <h2>Question</h2>
-    {{seed_example.question}}
-
-    <label for="answer">Answer</label>
-    <input name="answer" id="answer" required>
-
-    <input type="submit" value="Next">
-  </form>
+  <h2>Answer</h2>
+  <input name="answer" id="answer" required>
 {% endblock %}
