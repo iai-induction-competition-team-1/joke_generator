@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Joke Generator Competition{% endblock %}</h1>
+  <a href="{{url_for('home.index')}}"><h1>{% block title %}Joke Generator Competition{% endblock %}</h1></a>
 {% endblock %}
 
 {% block content %}
