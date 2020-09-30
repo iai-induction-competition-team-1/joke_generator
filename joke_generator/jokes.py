@@ -5,7 +5,7 @@ from flask import (
 )
 from  sqlalchemy.sql.expression import func
 
-from adverserial import db, SeedExample, NewAnswerExample, NewQuestionExample, NewContextExample, Vote
+from joke_generator import db, SeedExample, NewAnswerExample, NewQuestionExample, NewContextExample, Vote
 
 bp = Blueprint('jokes', __name__, url_prefix='/jokes')
 

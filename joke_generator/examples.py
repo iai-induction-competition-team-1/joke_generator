@@ -7,7 +7,7 @@ from flask import (
   Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 
-from adverserial import db, SeedExample
+from joke_generator import db, SeedExample
 
 bp = Blueprint('examples', __name__, url_prefix='/examples')
 

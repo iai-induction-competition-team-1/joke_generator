@@ -1,2 +1,2 @@
-web: gunicorn "adverserial:create_app()"
+web: gunicorn "joke_generator:create_app()"
 release: flask db upgrade
