@@ -9,4 +9,6 @@
 
   <h2>Answer</h2>
   {{seed_example.correct_answer()}}
+  <input class="button button-primary" type="submit" value="Next one" >
+  <a class="button" href="{{url_for('jokes.question')}}">Give me a different one</a>
 {% endblock %}
