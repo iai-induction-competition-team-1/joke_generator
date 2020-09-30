@@ -22,7 +22,7 @@ def record_answer():
   db.session.add(new_example)
   db.session.commit()
 
-  return redirect(url_for('jokes.question'))
+  return redirect(url_for('home.index'))
 
 @bp.route('/question', methods=['GET'])
 def question():
