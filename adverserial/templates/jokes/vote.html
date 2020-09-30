@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Joke Generator Competition{% endblock %}
+
+{% block header %}
+  <h1>Choose your favourite</h1>
+{% endblock %}
+
+{% block content %}
+  <main>
+    <div class="container">
+      <div class="row">
+        <div style="margin-top: 10%">
+          <form method="post">
+            <div class="row">
+              {% for joke in jokes %}
+                <div class="one-third column">
+                  <label>
+                    <input type="radio" value="{{joke.id}}" name="joke_id" id="joke-{{joke.id}}}">
+                    <div class="label-body">
+                      <p>
+                        {{joke.seed_example.context}}
+                      </p>
+                      <p>
+                        {{joke.seed_example.question}}
+                      </p>
+                      <p>
+                        {{joke.answer}}
+                      </p>
+                    </div>
+
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+
+            <input class="button button-primary" type="submit" value="Vote">
+            <a href="{{url_for('home.index')}}" class="button">I don't like any of them</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
