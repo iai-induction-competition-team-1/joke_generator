@@ -15,7 +15,9 @@
             {% block form %}{% endblock %}
           </div>
 
-          <input class="button button-primary" type="submit" value="Next" style="margin-top: 16px">
+          <div class="row" style="margin-top: 16px">
+            <a class="button" href="{{url_for('jokes.vote')}}">I've seen enough</a>
+          </div>
         </form>
       </div>
       <div class="one-third column" style="margin-top: 10%">

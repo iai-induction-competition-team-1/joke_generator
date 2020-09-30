@@ -61,18 +61,29 @@ class SeedExample(db.Model):
     elif self.correct_answer_index.lower() == "c":
       return self.answer_c
 
-
 class NewAnswerExample(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   seed_example_id = db.Column(db.Integer, db.ForeignKey('seed_example.id'), nullable=False)
+  seed_example = db.relationship('SeedExample',
+        backref=db.backref('new_answer_examples', lazy=True))
   answer = db.Column(db.String)
 
 class NewQuestionExample(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   seed_example_id = db.Column(db.Integer, db.ForeignKey('seed_example.id'), nullable=False)
+  seed_example = db.relationship('SeedExample',
+        backref=db.backref('new_question_examples', lazy=True))
   question = db.Column(db.String)
 
 class NewContextExample(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   seed_example_id = db.Column(db.Integer, db.ForeignKey('seed_example.id'), nullable=False)
+  seed_example = db.relationship('SeedExample',
+        backref=db.backref('new_context_examples', lazy=True))
   context = db.Column(db.String)
+
+class Vote(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  new_answer_example_id = db.Column(db.Integer, db.ForeignKey('new_answer_example.id'), nullable=False)
+  new_answer_example = db.relationship('NewAnswerExample',
+        backref=db.backref('votes', lazy=True))

@@ -5,7 +5,7 @@ from flask import (
 )
 from  sqlalchemy.sql.expression import func
 
-from adverserial import db, SeedExample, NewAnswerExample, NewQuestionExample, NewContextExample
+from adverserial import db, SeedExample, NewAnswerExample, NewQuestionExample, NewContextExample, Vote
 
 bp = Blueprint('jokes', __name__, url_prefix='/jokes')
 
@@ -22,7 +22,7 @@ def record_answer():
   db.session.add(new_example)
   db.session.commit()
 
-  return redirect(url_for('jokes.question'))
+  return redirect(url_for('jokes.answer'))
 
 @bp.route('/question', methods=['GET'])
 def question():
@@ -50,6 +50,22 @@ def record_context():
     context = request.form['context']
   )
   db.session.add(new_example)
+  db.session.commit()
+
+  return redirect(url_for('home.index'))
+
+
+@bp.route('/vote', methods=['GET'])
+def vote():
+  jokes = NewAnswerExample.query.order_by(func.random()).limit(3)
+  return render_template('jokes/vote.html', jokes=jokes)
+
+@bp.route('/vote', methods=['POST'])
+def record_vote():
+  new_vote = Vote(
+    new_answer_example_id = request.form['joke_id'],
+  )
+  db.session.add(new_vote)
   db.session.commit()
 
   return redirect(url_for('home.index'))

@@ -1,3 +1,4 @@
+import ast
 import click
 import functools
 import json
@@ -36,7 +37,8 @@ def replace(input_file):
     db.session.query(SeedExample).delete(synchronize_session=False)
     with open(input_file) as f:
       for line in f:
-        new_example_data = json.loads(line.strip())
+        # new_example_data = json.loads(line.strip())
+        new_example_data = ast.literal_eval(line.strip())
         new_example = SeedExample(
           context = new_example_data["context"],
           question = new_example_data["question"],
