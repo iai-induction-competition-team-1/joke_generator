@@ -2,15 +2,13 @@
 
 {% block title %}Joke Generator Competition{% endblock %}
 
-{% block header %}
-  <h1>Choose your favourite</h1>
-{% endblock %}
-
 {% block content %}
   <main>
     <div class="container">
       <div class="row">
-        <div style="margin-top: 10%">
+        <h2>Which of these made you laugh the most?</h2>
+        <h5>Pick your favourite</h5>
+        <div>
           <form method="post">
             <div class="row">
               {% for joke in jokes %}
