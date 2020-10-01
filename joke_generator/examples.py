@@ -60,24 +60,24 @@ def export():
 
       other_seed_example_answers = ['A', 'B', 'C']
       other_seed_example_answers.remove(new_example.seed_example.correct_answer_index)
-      another_answer_index = random.choice(other_seed_example_answers)
-      if another_answer_index.lower() == 'a':
-        another_answer = new_example.seed_example.answer_a
-      elif another_answer_index.lower() == 'b':
-        another_answer = new_example.seed_example.answer_b
-      elif another_answer_index.lower() == 'c':
-        another_answer = new_example.seed_example.answer_c
+      for another_answer_index in other_seed_example_answers:
+        if another_answer_index.lower() == 'a':
+          another_answer = new_example.seed_example.answer_a
+        elif another_answer_index.lower() == 'b':
+          another_answer = new_example.seed_example.answer_b
+        elif another_answer_index.lower() == 'c':
+          another_answer = new_example.seed_example.answer_c
 
-      answer_list = [new_answer, correct_answer, another_answer]
-      random.shuffle(answer_list)
-      correct_answer_index = answer_list.index(correct_answer)
-      correct_answer_letter = ['A', 'B', 'C'][correct_answer_index] # conver 0,1,2 to A,B,C
+        answer_list = [new_answer, correct_answer, another_answer]
+        random.shuffle(answer_list)
+        correct_answer_index = answer_list.index(correct_answer)
+        correct_answer_letter = ['A', 'B', 'C'][correct_answer_index] # conver 0,1,2 to A,B,C
 
-      new_example_data = {'context': new_example.seed_example.context,
-        'question': new_example.seed_example.question,
-        'answerA': answer_list[0],
-        'answerB': answer_list[1],
-        'answerC': answer_list[2],
-        'correct': correct_answer_letter
-      }
-      print(json.dumps(new_example_data))
+        new_example_data = {'context': new_example.seed_example.context,
+          'question': new_example.seed_example.question,
+          'answerA': answer_list[0],
+          'answerB': answer_list[1],
+          'answerC': answer_list[2],
+          'correct': correct_answer_letter
+        }
+        print(json.dumps(new_example_data))
