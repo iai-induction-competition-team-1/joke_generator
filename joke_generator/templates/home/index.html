@@ -15,6 +15,88 @@
           <a class="button button-primary" href="{{ url_for('jokes.answer') }}">START HERE</a>
         </div>
       </div>
+      <div class="row">
+        <h2>Top Jokes</h2>
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Context</th>
+              <th>Question</th>
+              <th>Answer</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for top_joke in top_jokes %}
+            <tr>
+              <td>{{top_joke[0]}}</td>
+              <td>{{top_joke[1]}}</td>
+              <td>{{top_joke[2]}}</td>
+              <td>{{top_joke[3]}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <h2>Top Jokers</h2>
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Submissions</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tracey Ullman</td>
+              <td>834</td>
+              <td>1054</td>
+            </tr>
+            <tr>
+              <td>Richard Ayoade</td>
+              <td>634</td>
+              <td>839</td>
+            </tr>
+            <tr>
+              <td>John Cleese</td>
+              <td>3456</td>
+              <td>839</td>
+            </tr>
+            <tr>
+              <td>Catherine Tate</td>
+              <td>645</td>
+              <td>810</td>
+            </tr>
+            <tr>
+              <td>George Carlin</td>
+              <td>234</td>
+              <td>763</td>
+            </tr>
+            <tr>
+              <td>Mindy Kaling</td>
+              <td>244</td>
+              <td>439</td>
+            </tr>
+            <tr>
+              <td>Ali G</td>
+              <td>84</td>
+              <td>120</td>
+            </tr>
+            <tr>
+              <td>Jimmy Kimmel</td>
+              <td>320</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Russell Brand</td>
+              <td>5000</td>
+              <td>-5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 {% endblock %}
